@@ -1,0 +1,36 @@
+<aura:component controller="DisplayMostRecentAccountsController">
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInIt}"/>
+    
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="large" class="slds-hide" /> 
+    
+    <!-- the container element determine the height of the datatable -->
+    
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-card__header slds-grid slds-page-header customRelatedListHeader">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">        
+                    <lightning:icon iconName="standard:account" alternativeText="Accounts" title="Accounts" size="small"/>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+                            <span>Accounts</span>
+                        </a>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        <div style="height:500px">
+            <lightning:datatable
+                                 keyField="id"
+                                 data="{! v.data }"
+                                 columns="{! v.columns }"
+                                 hideCheckboxColumn="true"/>
+        </div>
+    </article>
+</aura:component>
